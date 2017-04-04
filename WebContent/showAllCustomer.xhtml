@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<link rel="stylesheet" type="text/css" href="cssLayout.css" />
+	<link rel="stylesheet" type="text/css" href="default.css" />
+	<title></title>
+</h:head>
+
+<h:body>
+
+	<ui:composition template="./resources/templateout.xhtml">
+		<ui:define name="top">
+			<h:outputLabel>
+				<h1>Welcome to M223 Customer JPA Sample Application</h1>
+			</h:outputLabel>
+
+		</ui:define>
+		<ui:define name="left">
+			<!--  <h:outputLabel>Menu</h:outputLabel>  -->
+
+
+		</ui:define>
+		<ui:define name="content">
+			<h1>All customers</h1>
+
+			<h:form>
+				<h:dataTable var="customer"
+					value="#{customerController.allCustomers}">
+
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Vorname" />
+						</f:facet>
+						<h:outputText value="#{customer.firstname}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Nachname" />
+						</f:facet>
+						<h:outputText value="#{customer.lastname}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Email" />
+						</f:facet>
+						<h:outputText value="#{customer.email}" />
+					</h:column>
+
+					<h:column>
+						<h:commandLink action="#{customerController.showCustomer(customer)}"
+							value="details" />
+					</h:column>
+
+					<h:column>
+						<h:commandLink action="#{customerController.showEditCustomer(customer)}"
+							value="bearbeiten" />
+					</h:column>
+
+					<h:column>
+						<h:commandLink action="#{customerController.deleteCustomer(customer)}"
+							value="löschen" />
+					</h:column>
+
+
+
+				</h:dataTable>
+
+				<h:commandButton action="#{customerController.showNewCustomer()}"
+					value="neu" />
+
+
+			</h:form>
+		</ui:define>
+	</ui:composition>
+
+</h:body>
+
+</html>

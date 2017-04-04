@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://java.sun.com/jsf/composite"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+  <!-- INTERFACE -->
+  <cc:interface>
+    <cc:actionSource name="loginButton" targets="loginForm:loginButton" />
+    <cc:attribute name="loginButtonText" default="Login" required="true"/>
+    <cc:attribute name="nameLabel" />
+    <cc:attribute name="passwordLabel" />
+    <cc:attribute name="loginAction" method-signature="java.lang.String action()" />
+    <cc:attribute name="managedBean" />
+  </cc:interface>
+
+  <!-- IMPLEMENTATION -->
+  <cc:implementation>
+
+    <h:outputStylesheet library="comp/util" name="loginDialog.css"/>
+
+    <h:form id="loginForm" prependId="false" styleClass="loginForm">
+      <h:panelGrid columns="3">
+        <h:outputLabel value="#{cc.attrs.nameLabel}" for="login" styleClass="loginFormElement"/>
+        <h:inputText id="login" value="#{cc.attrs.managedBean.login}"
+                     validatorMessage="#{msg.val_key_no_blanks}"
+                     requiredMessage="#{msg.val_key_required}"
+                     styleClass="loginFormElement" >
+          <f:validateRegex pattern="^(\s*)([\W\w]*)(\b\s*$)"/>
+          <f:validateRequired />
+        </h:inputText>
+        <h:message for="login" styleClass="texterror"/>
+
+        <h:outputLabel value="#{cc.attrs.passwordLabel}" for="password" styleClass="loginFormElement"/>
+        <h:inputSecret id="password" value="#{cc.attrs.managedBean.password}"
+                       validatorMessage="#{msg.val_key_no_blanks}"
+                       requiredMessage="#{msg.val_key_no_blanks}"
+                       styleClass="loginFormElement" >
+          <f:validateRegex pattern="^(\s*)([\W\w]*)(\b\s*$)"/>
+          <f:validateRequired />
+        </h:inputSecret>
+        <h:message for="password" styleClass="texterror" />
+      </h:panelGrid>
+
+      <fieldset class="submit">
+        <h:commandButton id="loginButton"
+                         value="#{cc.attrs.loginButtonText}"
+                         action="#{cc.attrs.loginAction}" styleClass="submit"/>
+      </fieldset>
+    </h:form>
+  </cc:implementation>
+</html>

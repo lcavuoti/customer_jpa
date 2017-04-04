@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link href="./resources/css/default.css" rel="stylesheet"
+		type="text/css" />
+	<link href="./resources/css/cssLayout.css" rel="stylesheet"
+		type="text/css" />
+	<title>Customer JPA Sample Application</title>
+</h:head>
+
+<h:body>
+	<f:view>
+		<div id="wrapper">
+			<div id="top">
+				<ui:insert name="top"><h1>M223 2015</h1></ui:insert>
+				
+			</div>
+			<div id="headerimage">
+				<img src="resources/header_de.png" alt="headerimage" width="600" />
+			</div>
+
+			<div id="container">
+				<div id="left">
+					<ui:insert name="left"></ui:insert>
+					<!-- Menu Links -->
+					<br />
+					<h:link outcome="index.xhtml">Home</h:link>
+					<br />
+					<h:link outcome="showAllCustomer.xhtml">show all customer</h:link><br />
+				</div>
+
+				<div id="content">
+					<ui:insert name="content">Content</ui:insert>
+				</div>
+
+			</div>
+
+			<div id="bottom">
+				<ui:insert name="bottom">&copy; 2015 <b>Schule</b> interactive <b>GmbH</b>
+						<a href="http://www.zli.ch"
+							title="ZLI" class="navFooter"
+							target="_blank"> www.zli.ch</a> | <a
+							href="mailto:info@zli.ch" title="Information"
+							class="navFooter"> Information</a></ui:insert>
+	
+	
+	
+			</div>
+		</div>
+	</f:view>
+</h:body>
+
+</html>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:composite="http://java.sun.com/jsf/composite">
+
+  <!-- INTERFACE -->
+  <composite:interface>
+    <composite:attribute name="image"/>
+    <composite:attribute name="actionListener"
+                         method-signature="void action(javax.faces.event.ActionEvent)"/>
+    <composite:attribute name="styleClass" default="commandIcon" required="false"/>
+    <composite:attribute name="height" default="100%" required="false" />
+    <composite:attribute name="width" default="100%" required="false" />
+  </composite:interface>
+
+  <!-- IMPLEMENTATION -->
+  <composite:implementation>
+    <h:outputStylesheet library="comp/util"
+                        name="commandIcon.css"/>
+    <h:commandLink actionListener="#{cc.attrs.actionListener}" immediate="true">
+
+      <h:graphicImage value="#{cc.attrs.image}"
+                      styleClass="#{cc.attrs.styleClass}"/>
+
+    </h:commandLink>
+  </composite:implementation>
+</html>

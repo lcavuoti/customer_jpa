@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<link rel="stylesheet" type="text/css" href="cssLayout.css" />
+	<link rel="stylesheet" type="text/css" href="default.css" />
+	<title></title>
+</h:head>
+
+<h:body>
+
+	<ui:composition template="./resources/templateout.xhtml">
+		<ui:define name="top">
+			<h:outputLabel>
+				<h1>Welcome to eCustomer Application show selected customers
+					Page</h1>
+			</h:outputLabel>
+
+		</ui:define>
+		<ui:define name="content">
+			<h1>Show selected Customer</h1>
+			<h:form>
+				<h:panelGrid columns="3">
+
+					<h:outputLabel for="firstname" value="Vorname" />
+					<h:outputText id="firstname" value="#{customerController.current.firstname}"
+						required="true" />
+					<h:message for="firstname" />
+
+
+					<h:outputLabel for="lastname" value="Nachname" />
+					<h:outputText id="lastname" value="#{customerController.current.lastname}"
+						required="true" />
+					<h:message for="lastname" />
+
+					<h:outputLabel for="email" value="Email" />
+					<h:outputText id="email" value="#{customerController.current.email}"
+						required="true" />
+					<h:message for="email" />
+
+				</h:panelGrid>
+
+				<h:commandButton id="cancelBtn" value="cancel"
+					action="showAllCustomer" styleClass="submit" />
+				<h:commandButton id="editBtn" value="edit"
+					action="#{customerController.showEditCustomer(customerController.current)}"
+					styleClass="submit" />
+				<h:commandButton id="deleteBtn" value="delete"
+					action="#{customerController.showDeleteConfirmation()}"
+					styleClass="submit" />
+
+			</h:form>
+
+		</ui:define>
+	</ui:composition>
+
+</h:body>
+
+</html>
